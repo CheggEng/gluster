@@ -16,3 +16,46 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+case node[:platform]
+when 'ubuntu'
+  apt_repository "glusterfs" do
+    uri "http://ppa.launchpad.net/semiosis/ubuntu-glusterfs-3.4/ubuntu"
+    components ["main"]
+    distribution node['lsb']['codename']
+    keyserver "keyserver.ubuntu.com"
+    key "774BAC4D"
+    action :add
+  end
+when 'debian'
+  apt_repository "glusterfs" do 
+    uri "http://download.gluster.org/pub/gluster/glusterfs/3.4/3.4.2/Debian/apt"
+    components [ "main" ]
+    distribution 
+    key "http://download.gluster.org/pub/gluster/glusterfs/3.4/3.4.2/Debian/pubkey.gpg"
+    action :add
+  end
+when 'centos','redhat'
+  execute "create-yum-cache" do
+    command "yum -q makecache"
+    action :nothing
+  end
+
+  ruby_block "reload-internal-yum-cache" do
+    block do
+      Chef::Provider::Package::Yum::YumCache.instance.reload
+    end
+    action :nothing
+  end
+
+  remote_file "/etc/yum.repos.d/gluster.epel.repo" do
+    source "http://download.gluster.org/pub/gluster/glusterfs/3.4/3.4.2/EPEL.repo/glusterfs-epel.repo"
+    owner "root"
+    group "root"
+    mode 0644
+    action :create
+    notifies :run, "execute[create-yum-cache]", :immediately
+    notifies :create, "ruby_block[reload-internal-yum-cache]", :immediately
+  end
+else
+  raise "Unsupported platform '#{node[:platform]}'"
+end
