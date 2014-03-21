@@ -10,3 +10,5 @@ version          '0.1.0'
 depends "apt"
 
 recipe "gluster::default", "configures repositories for gluster"
+recipe "gluster::server", "installs gluster server"
+recipe "gluster::client", "installs gluster client"
