@@ -12,6 +12,7 @@ depends "apt"
 recipe "gluster::default", "configures repositories for gluster"
 recipe "gluster::server", "installs gluster server"
 recipe "gluster::client", "installs gluster client"
+recipe "gluster::server-peer-probe", "server peer probe"
 
 
 attribute "gluster/peers", 
