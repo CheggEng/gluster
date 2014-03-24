@@ -12,3 +12,9 @@ depends "apt"
 recipe "gluster::default", "configures repositories for gluster"
 recipe "gluster::server", "installs gluster server"
 recipe "gluster::client", "installs gluster client"
+
+
+attribute "gluster/peers", 
+  :display_name => "gluster peers",
+  :description => "gluster peers",
+  :type => "array"
