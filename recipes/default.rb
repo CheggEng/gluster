@@ -59,3 +59,5 @@ when 'centos','redhat'
 else
   raise "Unsupported platform '#{node[:platform]}'"
 end
+
+chef_gem 'xml-simple'
