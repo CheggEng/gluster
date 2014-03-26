@@ -28,4 +28,4 @@ node[:gluster][:peers].each do |peer|
   end
 end
 
-Chef::Log.info PP.pp(XmlSimple.xml_in(Mixlib::ShellOut.new("gluster peer status --xml").run_command.stdout))
+Chef::Log.info XmlSimple.xml_in(Mixlib::ShellOut.new("gluster peer status --xml").run_command.stdout)
