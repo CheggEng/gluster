@@ -1,5 +1,7 @@
 require 'mixlib/shellout'
 require 'xmlsimple'
+require 'pp'
+
 Chef::Log.info "Probing Peer"
 
 node[:gluster][:peers].each do |peer|
