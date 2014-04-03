@@ -4,7 +4,7 @@ require 'xmlsimple'
 volume_name=node[:gluster][:volume][:name]
 peers=node[:gluster][:peers]
 Chef::Log.info "Peer Count: #{peers.size.to_s}"
-cmd = "gluster volume create #{volume_name} replica #{peers.size}"
+cmd = "gluster volume create #{volume_name} replica #{peers.size.to_s} "
 
 peers.each do |peer|
   cmd += "#{peer}:#{node[:gluster][:brick][:path]} "
