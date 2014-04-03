@@ -9,6 +9,8 @@ cmd = "gluster volume create #{volume_name} replica #{peers.size.to_s} "
 peers.each do |peer|
   cmd += "#{peer}:#{node[:gluster][:brick][:path]} "
 end
+Chef::Log.info "Adding force command to mount root partition"
+cmd += "force"
 
 Chef::Log.info "Running: #{cmd}"
 brick_create=Mixlib::ShellOut.new(cmd).run_command
