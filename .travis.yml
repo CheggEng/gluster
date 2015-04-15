@@ -6,4 +6,4 @@ before_script: bundle exec berks install
 script: bundle exec strainer test --except kitchen
 notifications:
   slack:
-    secure: nHUVg+ygpNZS4YG12YV0KV8B+Q45uLBvmt10O3+sI6qE0T9TI30RsZksgE4NappIoKbsS3uzz9NREAINL2e0KisPwLEd1pupgJI9R2pFItDAFrdz4b8qXEloijuIB791JDY4OOZ7RaaKNQSd332G/ADzGc/luGAJk3KTUTn0jp0=
+    secure: g8fLCO0HeAPlQGRPt6dV/2850zLwMHb6sQESTXVudGHINlLJBdHY/j2DkKc/q5Avl8C5wAAaqowwXYtbPOaXr3NYCBnvljheF7eiGvHxc0ARFm536IukqAarmeeWYmD30dx3UyLbpnhOChtWkSityOMpp9esA0iN4ZlPLu+2O58=

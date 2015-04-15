@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-case node[:platform]
+case node['platform']
 when 'ubuntu'
   apt_repository "glusterfs" do
     uri "http://ppa.launchpad.net/semiosis/ubuntu-glusterfs-3.4/ubuntu"
@@ -34,7 +34,7 @@ when 'debian'
     key "http://download.gluster.org/pub/gluster/glusterfs/3.4/3.4.2/Debian/pubkey.gpg"
     action :add
   end
-when 'centos','redhat'
+when 'centos','redhat', 'amazon', 'scientific'
   execute "create-yum-cache" do
     command "yum -q makecache"
     action :nothing
@@ -57,7 +57,7 @@ when 'centos','redhat'
     notifies :create, "ruby_block[reload-internal-yum-cache]", :immediately
   end
 else
-  raise "Unsupported platform '#{node[:platform]}'"
+  raise "Unsupported platform '#{node['platform']}'"
 end
 
 chef_gem 'xml-simple'
