@@ -21,6 +21,9 @@ $LOAD_PATH.unshift(libraries_path) unless $LOAD_PATH.include?(libraries_path)
 
 require 'chefspec'
 require 'chefspec/berkshelf'
+require 'coveralls'
+
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.platform = 'centos'
