@@ -60,4 +60,6 @@ else
   raise "Unsupported platform '#{node['platform']}'"
 end
 
-chef_gem 'xml-simple'
+chef_gem 'xml-simple' do
+  action :install
+end
