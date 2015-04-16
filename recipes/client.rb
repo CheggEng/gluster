@@ -18,5 +18,5 @@ mount node['gluster']['client']['mount']['point'] do
   fstype "glusterfs"
   device "#{node['gluster']['peers'].first}:#{node['gluster']['brick']['path']}"
   options node['gluster']['client']['mount']['options']
-  action   [:mount, :enable]
+  action [ :mount, :enable ]
 end

@@ -1,7 +1,7 @@
 default['gluster']['peers'] = Array.new
 default['gluster']['brick']['path'] = "/mnt"
 default['gluster']['client']['mount']['point'] = "/mnt/gluster"
-default['gluster']['client']['mount']['options'] = ""
+default['gluster']['client']['mount']['options'] = []
 
 #gluster volume options
 default['gluster']['volume']['name'] = 'gluster-volume'
