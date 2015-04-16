@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "gluster": {
+      "path": "."
+    },
+    "apt": {
+      "locked_version": "2.7.0"
+    }
+  }
+}
