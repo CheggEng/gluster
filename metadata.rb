@@ -14,6 +14,7 @@ recipe "gluster::server", "installs gluster server"
 recipe "gluster::client", "installs gluster client"
 recipe "gluster::server-peer-probe", "server peer probe"
 recipe "gluster::setup-replica", "setu replica peer"
+recipe "gluster::populate-peers-from-chef-search", "gets peers from chef-search"
 
 attribute "gluster/peers", 
   :display_name => "gluster peers",
