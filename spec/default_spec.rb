@@ -2,9 +2,10 @@ require_relative 'spec_helper'
 
 describe 'gluster::default' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:node) { chef_run.node }
 
-  it 'downloads a repo file' do
-    expect(chef_run).to create_remote_file("/etc/yum.repos.d/gluster.epel.repo")
+  it 'includes install recipe' do
+    expect(chef_run).to include_recipe("gluster::install_#{node['gluster']['install_location']}_#{node['platform_family']}")
   end
 
   it 'installs a chef_gem with the default action' do

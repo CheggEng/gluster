@@ -16,8 +16,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "gluster::install_#{node['gluster']['install_location']}_#{node['platform_family']}"
-
-chef_gem 'xml-simple' do
-  action :install
+case node['platform']
+when 'ubuntu'
+  apt_repository "glusterfs" do
+    uri "http://ppa.launchpad.net/semiosis/ubuntu-glusterfs-3.4/ubuntu"
+    components ["main"]
+    distribution node['lsb']['codename']
+    keyserver "keyserver.ubuntu.com"
+    key "774BAC4D"
+    action :add
+  end
+when 'debian'
+  apt_repository "glusterfs" do
+    uri "http://download.gluster.org/pub/gluster/glusterfs/3.4/3.4.2/Debian/apt"
+    components [ "main" ]
+    distribution node['lsb']['codename']
+    key "http://download.gluster.org/pub/gluster/glusterfs/3.4/3.4.2/Debian/pubkey.gpg"
+    action :add
+  end
 end
