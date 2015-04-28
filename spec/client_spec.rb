@@ -12,6 +12,10 @@ describe 'gluster::client' do
   let(:mount_point) { chef_run.node['gluster']['client']['mount']['point'] }
   let(:mount_options) { chef_run.node['gluster']['client']['mount']['options'] }
 
+  it 'includes the default recipe' do
+    expect(chef_run).to include_recipe('gluster::default')
+  end
+
   it 'installs client package' do
     expect(chef_run).to install_package('glusterfs')
   end

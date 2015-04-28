@@ -1,3 +1,5 @@
+include_recipe "gluster::default"
+
 package "glusterfs" do
   action :install
 end
