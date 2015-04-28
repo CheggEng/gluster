@@ -17,9 +17,15 @@
 # limitations under the License.
 #
 
+Chef::Log.info "creating gluster repo"
+
 yum_repository "gluster-epel" do
   description "GlusterFS is a clustered file-system capable of scaling to several petabytes."
   baseurl "http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/epel-$releasever/$basearch/"
   gpgkey "http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/pub.key"
   action :create
 end
+
+Chef::Log.info "setting distro defaults"
+node.default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
+node.default['gluster']['server']['service'] = 'glusterd'

@@ -1,9 +1,15 @@
+#general settings
 default['gluster']['install_location'] = 'community'
+
+#server settings
+default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
+default['gluster']['server']['service'] = 'glusterd'
 default['gluster']['peers'] = Array.new
 default['gluster']['brick']['path'] = "/mnt"
+
+#client settings
 default['gluster']['client']['mount']['point'] = "/mnt/gluster"
 default['gluster']['client']['mount']['options'] = []
-
 
 #gluster volume options
 default['gluster']['volume']['name'] = 'gluster-volume'

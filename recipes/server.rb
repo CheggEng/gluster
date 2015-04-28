@@ -1,14 +1,11 @@
-package 'glusterfs-server' do
-  action :install
+include_recipe "gluster::default"
+
+node['gluster']['server']['packages'].each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
-service value_for_platform(
-  ["centos", "redhat", "fedora"] => {
-   "default" => "glusterd"
-  },
-  ["ubuntu", "debian"] => {
-   "default" => "glusterfs-server"
-  }
-) do
+service node['gluster']['server']['service'] do
   action [ :enable, :start ]
 end

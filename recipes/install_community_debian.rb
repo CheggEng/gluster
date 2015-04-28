@@ -16,6 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+Chef::Log.info "setting up repo"
 case node['platform']
 when 'ubuntu'
   apt_repository "glusterfs" do
@@ -35,3 +37,7 @@ when 'debian'
     action :add
   end
 end
+
+Chef::Log.info "setting distro defaults"
+node.default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
+node.default['gluster']['server']['service'] = 'glusterfs-server'
