@@ -20,13 +20,20 @@
 Chef::Log.info "setting up repo"
 case node['platform']
 when 'ubuntu'
-  apt_repository "glusterfs" do
-    uri "http://ppa.launchpad.net/semiosis/ubuntu-glusterfs-3.4/ubuntu"
-    components ["main"]
-    distribution node['lsb']['codename']
-    keyserver "keyserver.ubuntu.com"
-    key "774BAC4D"
-    action :add
+  case node['gluster']['version'].split('.')[0..1].join('.')
+  when '3.6'
+    apt_repository "glusterfs" do
+      uri "http://ppa.launchpad.net/gluster/glusterfs-3.6/ubuntu"
+      components ["main"]
+      distribution node['lsb']['codename']
+      keyserver "keyserver.ubuntu.com"
+      key "3FE869A9"
+      action :add
+    end
+  when '3.5'
+    Chef::Log.info "not implemented yet"
+  when '3.4'
+    Chef::Log.info "not implemented yet"
   end
 when 'debian'
   apt_repository "glusterfs" do
