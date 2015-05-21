@@ -11,4 +11,12 @@ describe 'gluster::default' do
   it 'installs a chef_gem with the default action' do
     expect(chef_run).to install_chef_gem('xml-simple')
   end
+
+  it 'create a ruby_block for yum cache for compile mode' do
+    expect(chef_run).to_not run_ruby_block("reload-internal-yum-cache")
+  end
+
+  it 'creates a execute for compile mode' do
+    expect(chef_run).to_not run_execute("create-yum-cache")
+  end
 end
