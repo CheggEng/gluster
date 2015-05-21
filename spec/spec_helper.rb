@@ -24,6 +24,7 @@ require 'chefspec/berkshelf'
 require 'coveralls'
 
 Coveralls.wear!
+ChefSpec::Coverage.start!
 
 RSpec.configure do |config|
   config.platform = 'centos'
