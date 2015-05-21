@@ -16,8 +16,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "gluster::install_#{node['gluster']['install_location']}_#{node['platform_family']}"
 
-chef_gem 'xml-simple' do
-  action :install
+Chef::Log.info "creating gluster repo"
+
+yum_repository "gluster-epel" do
+  description "GlusterFS is a clustered file-system capable of scaling to several petabytes."
+  baseurl "http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/epel-$releasever/$basearch/"
+  gpgkey "http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/pub.key"
+  action :create
 end
+
+Chef::Log.info "setting distro defaults"
+node.default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
+node.default['gluster']['server']['service'] = 'glusterd'

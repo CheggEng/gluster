@@ -1,5 +1,14 @@
+#general settings
+default['gluster']['install_location'] = 'community'
+default['gluster']['version'] = '3.6.2'
+
+#server settings
+default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
+default['gluster']['server']['service'] = 'glusterd'
 default['gluster']['peers'] = Array.new
 default['gluster']['brick']['path'] = "/mnt"
+
+#client settings
 default['gluster']['client']['mount']['point'] = "/mnt/gluster"
 default['gluster']['client']['mount']['options'] = []
 
