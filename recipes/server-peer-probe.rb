@@ -28,7 +28,6 @@ ruby_block "probing peers" do
         end
       end
     end
+    Chef::Log.info XmlSimple.xml_in(Mixlib::ShellOut.new("gluster peer status --xml").run_command.stdout)
   end
 end
-
-Chef::Log.info XmlSimple.xml_in(Mixlib::ShellOut.new("gluster peer status --xml").run_command.stdout)
