@@ -11,6 +11,10 @@ describe 'gluster::server' do
       expect(chef_run).to install_package('glusterfs-server')
     end
 
+    it 'installs attr package' do
+      expect(chef_run).to install_package('attr')
+    end
+
     it 'enables and starts a service' do
       expect(chef_run).to start_service(chef_run.node['gluster']['server']['service'])
       expect(chef_run).to enable_service(chef_run.node['gluster']['server']['service'])

@@ -1,0 +1,11 @@
+DEPENDENCIES
+  gluster
+    path: .
+    metadata: true
+
+GRAPH
+  apt (2.8.2)
+  gluster (0.1.0)
+    apt (>= 0.0.0)
+    yum (>= 0.0.0)
+  yum (3.6.3)
