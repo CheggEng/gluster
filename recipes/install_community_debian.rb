@@ -46,5 +46,5 @@ when 'debian'
 end
 
 Chef::Log.info "setting distro defaults"
-node.default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
+node.default['gluster']['server']['packages'] = [ 'glusterfs-server', 'attr' ]
 node.default['gluster']['server']['service'] = 'glusterfs-server'
