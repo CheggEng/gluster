@@ -36,7 +36,7 @@ describe 'gluster::client' do
   it 'mounts a gluster volume' do
     expect(chef_run).to mount_mount(mount_point).with(
       fstype: "glusterfs",
-      device: "#{chef_run.node['gluster']['peers'].first}:#{chef_run.node['gluster']['brick']['path']}",
+      device: "#{chef_run.node['gluster']['peers'].first}:/#{chef_run.node['gluster']['volume']['name']}",
       options: mount_options
     )
     expect(chef_run).to enable_mount(mount_point)
