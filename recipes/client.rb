@@ -16,9 +16,10 @@ directory node['gluster']['client']['mount']['point'] do
   action :create
 end
 
+peer_to_mount=node['gluster']['peers'][rand(0..(node['gluster']['peers'].size-1))]
 mount node['gluster']['client']['mount']['point'] do
   fstype "glusterfs"
-  device "#{node['gluster']['peers'].first}:#{node['gluster']['brick']['path']}"
+  device "#{peer_to_mount}:/#{node['gluster']['brick']['path']}"
   options node['gluster']['client']['mount']['options']
   action [ :mount, :enable ]
 end
