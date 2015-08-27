@@ -1,5 +1,8 @@
 include_recipe "gluster::default"
 
+Chef::Log.info "Peers:#{node['gluster']['peers'].join(',')}"
+Chef::Log.info "Mount Point: #{node['gluster']['client']['mount']['point']}"
+
 package "glusterfs" do
   action :install
 end
