@@ -8,7 +8,7 @@ version          '0.1.0'
 
 
 depends "apt"
-depends "yum", ">~ 3.2.3"
+depends "yum", ">= 3.2.3"
 
 recipe "gluster::default", "configures repositories for gluster"
 recipe "gluster::server", "installs gluster server"
