@@ -1,5 +1,4 @@
-# gluster cookbook [![Coverage Status](https://coveralls.io/repos/RightScale-Services-Cookbooks/gluster/badge.svg?branch=master)](https://coveralls.io/r/RightScale-Services-Cookbooks/gluster?branch=master)
-=======
+# gluster cookbook [![Coverage Status](https://coveralls.io/repos/RightScale-Services-Cookbooks/gluster/badge.svg?branch=master)](https://coveralls.io/r/RightScale-Services-Cookbooks/gluster?branch=master) [![Build Status](https://travis-ci.org/RightScale-Services-Cookbooks/gluster.svg?branch=master)](https://travis-ci.org/RightScale-Services-Cookbooks/gluster)
 This cookbook is designed to setup gluster based off the distro or community
 installs. It will setup a server and client and setup a replication pair.
 
