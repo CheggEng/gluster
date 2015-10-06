@@ -15,7 +15,7 @@ installs. It will setup a server and client and setup a replication pair.
 
 # Recipes
 * gluster::default - needed for both client and server, sets up repos, etc.
-* gluster::client - uses rightscale_tag to setup gluster client.
+* gluster::client - connects to the first peer in the `node['gluster']['peers']` array and mounts drive
 * gluster::server - installs the server package
 * gluster::server-peer-probe - iterates thru `node['gluster']['peers']` and probes all peers
 * gluster::setup-replica - creates a replica-set across all servers in `node['gluster']['peers']`
