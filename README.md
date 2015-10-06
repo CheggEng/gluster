@@ -21,5 +21,15 @@ installs. It will setup a server and client and setup a replication pair.
 * gluster::setup-replica - creates a replica-set across all servers in `node['gluster']['peers']`
 * gluster::fix-restored-party-attr - clears restored volume attributes
 
+# Client Runlist
+* gluster::default
+* gluster::client
+
+# Server Runlist
+* gluster::default
+* gluster::server
+* gluster::server-peer-probe
+* gluster::setup-replica
+
 # Author
 Author:: RightScale, Inc. (<ps@rightscale.com>)
