@@ -1,2 +1,4 @@
-source "https://supermarket.chef.io"
+#source "https://supermarket.chef.io"
+site :opscode
+
 metadata
