@@ -11,7 +11,7 @@ installs. It will setup a server and client and setup a replication pair.
 * yum - https://github.com/chef-cookbooks/yum/
 
 # Attributes
-* `node['gluster']['peers']` - An Array of Gluster Peers
+* `node['gluster']['peers']` - An IP Address Array of Gluster Peers
 
 # Recipes
 * gluster::default - needed for both client and server, sets up repos, etc.
