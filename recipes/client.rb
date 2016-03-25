@@ -2,6 +2,7 @@ include_recipe "gluster::default"
 
 Chef::Log.info "Peers:#{node['gluster']['peers'].join(',')}"
 Chef::Log.info "Mount Point: #{node['gluster']['client']['mount']['point']}"
+Chef::Log.info "Client Packages: #{node['gluster']['client']['packages']}"
 
 node['gluster']['client']['packages'].each do |pkg|
   package pkg do
