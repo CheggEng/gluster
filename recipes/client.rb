@@ -2,13 +2,12 @@ include_recipe "gluster::default"
 
 Chef::Log.info "Peers:#{node['gluster']['peers'].join(',')}"
 Chef::Log.info "Mount Point: #{node['gluster']['client']['mount']['point']}"
+Chef::Log.info "Client Packages: #{node['gluster']['client']['packages']}"
 
-package "glusterfs" do
-  action :install
-end
-
-package "glusterfs-fuse" do
-  action :install
+node['gluster']['client']['packages'].each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
 directory node['gluster']['client']['mount']['point'] do

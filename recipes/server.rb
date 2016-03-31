@@ -7,5 +7,11 @@ node['gluster']['server']['packages'].each do |pkg|
 end
 
 service node['gluster']['server']['service'] do
+  case node['platform']
+  when 'ubuntu'
+    if node['platform_version'].to_f >= 14.04
+      provider Chef::Provider::Service::Upstart
+    end
+  end
   action [ :enable, :start ]
 end

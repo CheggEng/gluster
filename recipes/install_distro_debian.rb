@@ -20,3 +20,4 @@
 Chef::Log.info "setting distro defaults"
 node.default['gluster']['server']['packages'] = [ 'glusterfs-server', 'attr' ]
 node.default['gluster']['server']['service'] = 'glusterfs-server'
+node.default['gluster']['client']['packages'] = [ 'glusterfs-client' ]
