@@ -21,9 +21,11 @@ Chef::Log.info "creating gluster repo"
 
 yum_repository "gluster-epel" do
   description "GlusterFS is a clustered file-system capable of scaling to several petabytes."
-  baseurl "http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/epel-$releasever/$basearch/"
+  baseurl node['gluster']['yum']['repo']
   gpgkey "http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/pub.key"
   action :create
+  enabled false
+  gpgcheck false
 end
 
 Chef::Log.info "setting distro defaults"
