@@ -1,7 +1,7 @@
 #general settings
 default['gluster']['install_location'] = 'community'
 default['gluster']['version'] = '3.6.2'
-
+default['gluster']['yum']['repo'] = 'http://buildlogs.centos.org/centos/$releasever/storage/$basearch/gluster-3.8/'
 #server settings
 default['gluster']['server']['packages'] = [ 'glusterfs-server' ]
 default['gluster']['server']['service'] = 'glusterd'
